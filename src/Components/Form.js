@@ -2,7 +2,7 @@ import React from "react";
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 
-
+import '../css/style.css'
 
 class Form extends React.Component {
   constructor(props) {
