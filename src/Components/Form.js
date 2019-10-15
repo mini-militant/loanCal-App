@@ -9,13 +9,14 @@ class Form extends React.Component {
     super(props);
     this.state = {
       loanAmount: 500,
-      loanDuration: 6
+      loanDuration: 6,
     };
   }
+
+
   handleLoanAmountChange = event => {
     this.setState({ loanAmount: event.target.value });
   };
-
   handleLoanDurationChange = event => {
     this.setState({ loanDuration: event.target.value });
   };
@@ -48,11 +49,14 @@ class Form extends React.Component {
               <label className="label">
                 Loan Amount :
                 <input
-                  type="text"
+                  type="number"
+                  min='500'
+                  max='5000'
                   name="loanAmount"
                   value={this.state.loanAmount}
                   onChange={this.handleLoanAmountChange}
                 />
+                <div>{this.state.loanAmountError}</div>
                 <div className="slidecontainer">
                   <input
                     type="range"
@@ -60,6 +64,7 @@ class Form extends React.Component {
                     max="5000"
                     value={this.state.loanAmount}
                     className="slider"
+
                     id="myRange"
                     onChange={this.handleLoanAmountChange}
                   />
@@ -69,7 +74,9 @@ class Form extends React.Component {
               <label className="label">
                 Loan Duration :
                 <input
-                  type="text"
+                  type="number"
+                  min="6"
+                  max="24"
                   name="loanDuration"
                   value={this.state.loanDuration}
                   onChange={this.handleLoanDurationChange}

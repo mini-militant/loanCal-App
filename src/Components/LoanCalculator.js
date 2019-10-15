@@ -13,15 +13,14 @@ class LoanCalculator extends React.Component {
     };
     this.localStore = [];
   }
-  handleChange = event => {
-    this.setState({ loanAmount: event.target.value });
-  };
+  
 
   displayMonthlyPay = async event => {
     event.preventDefault();
     console.log(this.state.loanDuration);
     const loanAmount = event.target.elements.loanAmount.value;
     const loanDuration = event.target.elements.loanDuration.value;
+
     const api_call = await fetch(
       `https://ftl-frontend-test.herokuapp.com/interest?amount=${loanAmount}&numMonths=${loanDuration}`
     );
@@ -45,15 +44,14 @@ class LoanCalculator extends React.Component {
     return (
       <div className="wrapper">
         <div className="main">
-
           <div className="form-container">
             <Form displayMonthlyPay={this.displayMonthlyPay} />
             {this.state.displayMonthly ? (
               <div className="label" >
                 <br />
-                <p>Interest Rate:{this.state.interestRate}</p>
+                <p>Interest Rate : {this.state.interestRate}</p>
                 <br />
-                <p>Monthly Pay:{this.state.monthlyPay}</p>
+                <p>Monthly Pay : {this.state.monthlyPay}</p>
               </div>
             ) : null}
             </div>
